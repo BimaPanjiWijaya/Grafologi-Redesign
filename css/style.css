@@ -1,0 +1,327 @@
+:root {
+  --ink: #1b2430;
+  --ink-soft: #2c394a;
+  --parchment: #f6f0e4;
+  --parchment-line: #e4d9c4;
+  --charcoal: #2a2622;
+  --gold: #b4863a;
+  --gold-soft: #d9b77c;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Work Sans", sans-serif;
+  color: var(--charcoal);
+  background: var(--parchment);
+}
+
+/* ===== LAYOUT ===== */
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ===== LEFT PANEL (text content) ===== */
+.hero-left {
+  background: var(--parchment);
+  padding: 6vw 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 28px;
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  display: inline-block;
+}
+
+h1 {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: clamp(2.4rem, 4.6vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 22px 0;
+  color: var(--ink);
+}
+
+/* Signature underline accent below headline word */
+.underline-wrap {
+  position: relative;
+  display: inline-block;
+}
+.underline-wrap svg {
+  position: absolute;
+  left: -2%;
+  bottom: -14px;
+  width: 104%;
+  height: 24px;
+  overflow: visible;
+}
+.underline-wrap path {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  animation: draw 1.4s 0.6s ease forwards;
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.sub {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #4a443c;
+  max-width: 34rem;
+  margin: 0 0 36px 0;
+}
+.sub strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+
+.btn-primary {
+  font-family: "Work Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--parchment);
+  background: var(--ink);
+  border: none;
+  padding: 17px 34px;
+  border-radius: 2px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+.btn-primary:hover {
+  background: var(--gold);
+  transform: translateY(-2px);
+}
+.btn-primary:focus-visible {
+  outline: 3px solid var(--gold-soft);
+  outline-offset: 3px;
+}
+
+.btn-secondary {
+  font-size: 0.95rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 3px;
+  transition: opacity 0.2s;
+}
+.btn-secondary:hover {
+  opacity: 0.6;
+}
+
+/* Feature trait strip */
+.traits {
+  display: flex;
+  gap: 34px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--parchment-line);
+  padding-top: 26px;
+}
+.trait {
+  max-width: 180px;
+}
+.trait .num {
+  font-family: "Fraunces", serif;
+  font-size: 1.5rem;
+  color: var(--gold);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+.trait p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #5a5348;
+}
+
+/* ===== RIGHT PANEL (visual/ink side) ===== */
+.hero-right {
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vw;
+}
+
+.ink-texture {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 20% 15%,
+      rgba(180, 134, 58, 0.12),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 85%,
+      rgba(180, 134, 58, 0.08),
+      transparent 45%
+    );
+}
+
+.signature-svg {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 2;
+}
+.signature-svg path {
+  fill: none;
+  stroke: var(--gold-soft);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
+  animation: signDraw 3.2s 0.4s ease forwards;
+}
+@keyframes signDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.cert-card {
+  position: absolute;
+  bottom: 8vw;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--parchment);
+  color: var(--ink);
+  padding: 18px 26px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: cardIn 0.8s 2.2s ease forwards;
+  z-index: 3;
+  max-width: 300px;
+}
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 14px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.cert-seal {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+.cert-card .cert-text {
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+.cert-card .cert-text strong {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.tag-handwritten {
+  position: absolute;
+  top: 8vw;
+  right: 6vw;
+  font-family: "Caveat", cursive;
+  font-size: 1.6rem;
+  color: var(--gold-soft);
+  transform: rotate(-6deg);
+  opacity: 0;
+  animation: cardIn 0.8s 2.6s ease forwards;
+  z-index: 3;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 880px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .hero-right {
+    min-height: 60vh;
+    order: -1;
+  }
+  .hero-left {
+    padding: 12vw 7vw 10vw;
+  }
+  .cert-card {
+    bottom: 6vw;
+    max-width: 82%;
+  }
+  .tag-handwritten {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .underline-wrap path,
+  .signature-svg path,
+  .cert-card,
+  .tag-handwritten {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
+  }
+}
