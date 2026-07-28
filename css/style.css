@@ -364,7 +364,7 @@ h1 {
   background: var(--gold);
 }
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 
 /* Tablet & di bawahnya */
 @media (max-width: 880px) {
@@ -446,6 +446,7 @@ h1 {
     max-width: 88%;
     padding: 12px 16px;
     gap: 10px;
+    display: none;
   }
   .cert-card .cert-text {
     font-size: 0.74rem;
